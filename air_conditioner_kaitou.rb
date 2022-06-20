@@ -2,7 +2,7 @@ input_lines = readlines
 
 room = input_lines[0].to_i
 air_conditioner = input_lines[1].to_i
-flow_volume = input_lines[2].to_i
+air_flow = input_lines[2].to_i
 
 temperature_diff = (room - air_conditioner).abs
 require_time = 0
@@ -15,15 +15,16 @@ elsif temperature_diff >= 10 then
   require_time = 60
 end
 
-if flow_volume == 1
+case air_flow
+when 1 then
   require_time
-elsif flow_volume == 2
-  require_time -= 5
-elsif flow_volume == 3
-  require_time -= 10
+when 2 then
+  require_time = require_time - 5
+when 3 then
+  require_time = require_time - 10
 else
-  puts "風量の値は1~3にしてください"
+  p "風量の値は1~3にしてください"
   exit
 end
-
+    
 p require_time
